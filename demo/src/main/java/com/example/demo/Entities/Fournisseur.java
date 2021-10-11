@@ -19,11 +19,11 @@ public class Fournisseur {
     public Fournisseur() {
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -51,7 +51,7 @@ public class Fournisseur {
         this.adresse = adresse;
     }
 
-    public Fournisseur(long id,String nom,String teléphone,String adresse) {
+    public Fournisseur(Long id,String nom,String teléphone,String adresse) {
         this.adresse=adresse;
         this.id=id;
         this.nom=nom;

@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Produit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     private String intitulé;
     private int qtt;
     private float prix_unitaire;
@@ -17,7 +17,7 @@ public class Produit {
     private Commande commande;
     public Produit() {}
 
-    public Produit(long id,String intitulé,int qtt,float prix_unitaire,float montant) {
+    public Produit(Long id,String intitulé,int qtt,float prix_unitaire,float montant) {
         this.id=id;
         this.intitulé=intitulé;
         this.prix_unitaire=prix_unitaire;
@@ -25,11 +25,11 @@ public class Produit {
         this.qtt=qtt;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

@@ -3,14 +3,28 @@ package com.example.demo.Entities;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Users")
+@Table(	name = "Users",
+        uniqueConstraints = {
+                @UniqueConstraint(columnNames = "username"),
+                @UniqueConstraint(columnNames = "email")
+        })
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
+    private String username;
     private String email;
     private String password;
+    @OneToOne
     private Role role;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
     public Role getRole() {
         return role;
@@ -23,18 +37,18 @@ public class User {
     public User() {
     }
 
-    public User(long id, String email, String password,Role role) {
+    public User(Long id, String email, String password, Role role) {
         this.id = id;
         this.email = email;
         this.password = password;
         this.role=role;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

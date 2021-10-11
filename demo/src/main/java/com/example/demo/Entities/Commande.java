@@ -9,7 +9,7 @@ import java.util.List;
 public class Commande {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     private Date date;
     private float totale;
     @ManyToOne
@@ -31,7 +31,7 @@ public class Commande {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -56,7 +56,7 @@ public class Commande {
 
 
 
-    public Commande(long id, Date date, float totale, Status status) {
+    public Commande(Long id, Date date, float totale, Status status) {
         this.id=id;
         this.date = date;
         this.totale = totale;

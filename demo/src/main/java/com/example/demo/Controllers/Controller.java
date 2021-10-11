@@ -2,6 +2,8 @@ package com.example.demo.Controllers;
 
 import com.example.demo.Entities.ERole;
 import com.example.demo.Entities.Role;
+import com.example.demo.Payload.request.Loginrequest;
+import com.example.demo.Payload.response.Jwtresponse;
 import com.example.demo.Repositories.RoleRepository;
 import com.example.demo.Repositories.UserRepository;
 import com.example.demo.Security.jwt.JwtUtils;
@@ -48,6 +50,7 @@ public class Controller {
     @Autowired
     JwtUtils jwtUtils;
 
+
     @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
 
@@ -62,7 +65,7 @@ public class Controller {
                 .map(item -> item.getAuthority())
                 .collect(Collectors.toList());
 
-        return ResponseEntity.ok(new JwtResponse(jwt,
+        return ResponseEntity.ok(new Jwtresponse(jwt,
                 userDetails.getId(),
                 userDetails.getUsername(),
                 userDetails.getEmail(),

@@ -1,2 +1,4 @@
-<p>liste-fournisseurs works!</p>
-<h1>test {{ context }}</h1>
+<h1>List des fournisseurs</h1>
+<ul>
+  <li *ngFor="let i of context">{{ i.nom }}</li>
+</ul>

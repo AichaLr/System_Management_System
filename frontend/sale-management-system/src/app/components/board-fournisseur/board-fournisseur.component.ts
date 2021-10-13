@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
+import { Order } from 'src/app/models/order';
 
 @Component({
   selector: 'app-board-fournisseur',
@@ -10,7 +11,9 @@ import { TokenStorageService } from 'src/app/services/token-storage.service';
 export class BoardFournisseurComponent implements OnInit {
   content: any;
   isLoggedIn: boolean;
-
+  roles: string;
+  currentuser: any;
+  orders: Order[];
   constructor(
     private userService: UserService,
     private tokenStorageService: TokenStorageService
@@ -19,14 +22,15 @@ export class BoardFournisseurComponent implements OnInit {
   ngOnInit(): void {
     this.isLoggedIn = !!this.tokenStorageService.getToken();
     console.log('itss loged in !!!' + this.isLoggedIn);
+    this.currentuser = this.tokenStorageService.getUser();
 
-    this.userService.getFournisseurBoard().subscribe(
+    this.roles = this.tokenStorageService.getUser().roles;
+
+    this.userService.getfournisseurorders(this.currentuser.id).subscribe(
       (data) => {
-        this.content = data;
+        this.orders = data;
       },
-      (err) => {
-        this.content = JSON.parse(err.error).message;
-      }
+      (err) => {}
     );
   }
   logout() {

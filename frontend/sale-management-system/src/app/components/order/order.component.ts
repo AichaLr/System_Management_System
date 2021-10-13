@@ -82,7 +82,7 @@ export class OrderComponent implements OnInit {
 
     console.log(this.getproduit(form.product.value));
     const order1: Order = {
-      id: null,
+      id: '1',
       date: this.validationDate,
       totale: form.price.value * form.qtt.value,
       produit: this.product,

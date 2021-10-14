@@ -8,18 +8,17 @@ public class Produit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String intitulé;
+    private String intitule;
     private int qtt;
     private float prix_unitaire;
     private float montant;
-    @ManyToOne
-    @JoinColumn(name="idCommande")
-    private Commande commande;
+   // @OneToOne
+    //private Commande commande;
+
     public Produit() {}
 
-    public Produit(Long id,String intitulé,int qtt,float prix_unitaire,float montant) {
-        this.id=id;
-        this.intitulé=intitulé;
+    public Produit(String intitule,int qtt,float prix_unitaire,float montant) {
+        this.intitule=intitule;
         this.prix_unitaire=prix_unitaire;
         this.montant=montant;
         this.qtt=qtt;
@@ -33,12 +32,12 @@ public class Produit {
         this.id = id;
     }
 
-    public String getIntitulé() {
-        return intitulé;
+    public String getIntitule() {
+        return intitule;
     }
 
-    public void setIntitulé(String intitulé) {
-        this.intitulé = intitulé;
+    public void setIntitule(String intitulé) {
+        this.intitule = intitule;
     }
 
     public int getQtt() {

@@ -12,22 +12,42 @@ public class Commande {
     private Long id;
     private Date date;
     private float totale;
-    @ManyToOne
-    @JoinColumn(name="idFournisseur")
+   @ManyToOne
+    @JoinColumn(name="idFournisseur"  )
     private Fournisseur fournisseur;
-    @OneToMany(mappedBy = "commande")
-    private Collection<Produit> LesProduits;
-    private Status status;
 
-    public Status getStatus() {
+    @OneToOne
+    @JoinColumn(name = "produit_id")
+    private Produit produit;
+
+    private String status;
+
+
+    public Fournisseur getFournisseur() {
+        return fournisseur;
+    }
+
+    public void setFournisseur(Fournisseur fournisseur) {
+        this.fournisseur = fournisseur;
+    }
+
+    public Produit getProduit() {
+        return produit;
+    }
+
+    public void setProduit(Produit produit) {
+        this.produit = produit;
+    }
+
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(Status status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
@@ -55,11 +75,14 @@ public class Commande {
     }
 
 
+    public Commande() {
+    }
 
-    public Commande(Long id, Date date, float totale, Status status) {
-        this.id=id;
+    public Commande(Date date, float totale, String status,Produit produit,Fournisseur fournisseur) {
         this.date = date;
         this.totale = totale;
         this.status=status;
+        this.fournisseur=fournisseur;
+        this.produit= produit;
     }
 }

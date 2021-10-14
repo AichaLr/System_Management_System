@@ -13,9 +13,11 @@ public class Fournisseur {
     private String nom;
     private String teléphone;
     private String adresse;
-    @OneToMany(mappedBy = "fournisseur")
+    @OneToOne
+    private User compte;
+    /*@OneToMany(mappedBy = "fournisseur")
     private Collection<Commande> LesComandes;
-
+*/
     public Fournisseur() {
     }
 
@@ -51,10 +53,10 @@ public class Fournisseur {
         this.adresse = adresse;
     }
 
-    public Fournisseur(Long id,String nom,String teléphone,String adresse) {
+    public Fournisseur(String nom,String teléphone,String adresse,User compte) {
         this.adresse=adresse;
-        this.id=id;
         this.nom=nom;
         this.teléphone=teléphone;
+        this.compte=compte;
     }
 }

@@ -42,9 +42,9 @@ public class User {
     public User() {
     }
 
-    public User(Long id, String email, String password, Role role) {
-        this.id = id;
+    public User( String username,String email, String password) {
         this.email = email;
+        this.username=username;
         this.password = password;
     }
 

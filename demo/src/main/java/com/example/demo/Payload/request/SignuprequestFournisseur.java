@@ -2,7 +2,7 @@ package com.example.demo.Payload.request;
 
 import java.util.Set;
 
-public class Signuprequest {
+public class SignuprequestFournisseur {
 
 
     private String username;
@@ -13,6 +13,33 @@ public class Signuprequest {
 
 
     private String password;
+    private String nom;
+    private String teléphone;
+    private String adresse;
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public String getTeléphone() {
+        return teléphone;
+    }
+
+    public void setTeléphone(String teléphone) {
+        this.teléphone = teléphone;
+    }
+
+    public String getAdresse() {
+        return adresse;
+    }
+
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
+    }
 
     public String getUsername() {
         return username;

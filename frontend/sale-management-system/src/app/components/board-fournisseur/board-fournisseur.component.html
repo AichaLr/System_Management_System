@@ -1,11 +1,40 @@
-<div class="container">
-  <header class="jumbotron">
-    <p>{{ content }}</p>
-  </header>
+<div class="sidenav">
+  <a [routerLink]="['../produits']">Products</a>
+  <a [routerLink]="['../fournisseurs']">Suppliers List</a>
+  <a [routerLink]="['../orderlist']">Orders List</a>
+  <a [routerLink]="['../order']">Order</a>
+  <a (click)="logout()">Logout</a>
 </div>
-<div *ngFor="let i of orders">
-  {{ i.date }}
-  {{ i.fournisseur.nom }}
-  {{ i.totale }}
-  {{ i.status }}
+
+<div class="main">
+  <div class="container">
+    <label>
+      <h1>Suppliers List</h1>
+    </label>
+    <br />
+    <br />
+
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>#</th>
+
+          <th>Date</th>
+          <th>Nom</th>
+          <th>Totale</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let i of orders">
+          <td>{{ i.id }}</td>
+
+          <td>{{ i.date | date }}</td>
+          <td>{{ i.fournisseur.nom }}</td>
+          <td>{{ i.totale }}</td>
+          <td>{{ i.status }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

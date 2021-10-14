@@ -1,4 +1,43 @@
-<h1>List des fournisseurs</h1>
-<ul>
-  <li *ngFor="let i of context">{{ i.nom }}</li>
-</ul>
+<div class="sidenav">
+  <a [routerLink]="['../produits']">Products</a>
+  <a [routerLink]="['../fournisseurs']">Suppliers List</a>
+  <a [routerLink]="['../orderlist']">Orders List</a>
+  <a [routerLink]="['../order']">Order</a>
+  <a (click)="logout()">Logout</a>
+</div>
+
+<div class="main">
+  <div class="container">
+    <label>
+      <h1>Suppliers List</h1>
+    </label>
+    <br />
+    <br />
+
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Supplier Id</th>
+          <th>Name</th>
+          <th>Location</th>
+
+          <th [routerLink]="['/dashboard/addsupplier']">
+            <button type="submit" class="btn btn-success">
+              Add New Supplier
+            </button>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let supplier of context">
+          <td>{{ supplier.id }}</td>
+          <td>{{ supplier.nom }}</td>
+          <td>{{ supplier.adresse }}</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <br />
+</div>

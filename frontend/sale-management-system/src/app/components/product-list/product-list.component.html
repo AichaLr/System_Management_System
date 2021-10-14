@@ -1,4 +1,78 @@
-<h1>List des produits</h1>
-<ul>
-  <li *ngFor="let i of context">{{ i.prix_unitaire }}</li>
-</ul>
+<div class="sidenav">
+  <a [routerLink]="['../produits']">Products</a>
+  <a [routerLink]="['../fournisseurs']">Suppliers List</a>
+  <a [routerLink]="['../orderlist']">Orders List</a>
+  <a [routerLink]="['../order']">Order</a>
+</div>
+
+<div class="main">
+  <div>
+    <div class="d-flex flex-column" id="content-wrapper">
+      <div id="content">
+        <div class="container-fluid">
+          <h2 class="text-dark mb-4">Products</h2>
+          <div class="card shadow">
+            <div class="card-header py-3">
+              <p class="text-primary m-0 font-weight-bold">
+                Products
+                <button
+                  class="btn btn-primary align-content-end float-right"
+                  type="button"
+                  (click)="addproduct()"
+                >
+                  Add Products
+                </button>
+              </p>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-6 text-nowrap">
+                  <div
+                    id="dataTable_length"
+                    class="dataTables_length"
+                    aria-controls="dataTable"
+                  ></div>
+                </div>
+                <div class="col-md-6">
+                  <div
+                    class="text-md-right dataTables_filter"
+                    id="dataTable_filter"
+                  ></div>
+                </div>
+              </div>
+              <div
+                class="table-responsive table mt-2"
+                id="dataTable"
+                role="grid"
+                aria-describedby="dataTable_info"
+              >
+                <table class="table my-0" id="dataTable">
+                  <thead class="colour">
+                    <tr>
+                      <!-- <th scope="col">Id</th> -->
+                      <th scope="col">Name</th>
+                      <th scope="col">Quantity</th>
+                      <th scope="col">Price per Unit</th>
+                      <th scope="col">Total</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let product of context">
+                      <!-- <th scope="row">{{product.productId}}</th> -->
+                      <td>{{ product.intitule }}</td>
+                      <td>{{ product.qtt }}</td>
+                      <td>
+                        {{ product.prix_unitaire }}
+                      </td>
+                      <td>{{ product.montant }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { Order } from 'src/app/models/order';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-board-fournisseur',
@@ -16,7 +17,8 @@ export class BoardFournisseurComponent implements OnInit {
   orders: Order[];
   constructor(
     private userService: UserService,
-    private tokenStorageService: TokenStorageService
+    private tokenStorageService: TokenStorageService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -36,7 +38,8 @@ export class BoardFournisseurComponent implements OnInit {
   logout() {
     if (this.isLoggedIn) {
       this.tokenStorageService.signOut();
-      window.location.reload();
+      this.router.navigate(['/login']);
+
       //  window.location.reload();
     }
   }

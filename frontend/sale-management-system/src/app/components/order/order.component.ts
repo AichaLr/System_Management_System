@@ -5,6 +5,8 @@ import { Fournisseur } from 'src/app/models/fournisseur';
 import { Order, Status } from 'src/app/models/order';
 import { Service1Service } from 'src/app/services/service1.service';
 import { stringify } from 'querystring';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-order',
@@ -27,7 +29,9 @@ export class OrderComponent implements OnInit {
   statuss: Status;
   constructor(
     private userService: UserService,
-    private service: Service1Service
+    private service: Service1Service,
+    private tokenStorageService: TokenStorageService,
+    private router: Router
   ) {}
   form: any = {
     product: null,
@@ -99,6 +103,7 @@ export class OrderComponent implements OnInit {
         //this.errorMessage = err.error.message;
       }
     );
+    this.router.navigate(['/orderlist']);
   }
   selectProduct(productID) {
     this.productId = productID;
@@ -109,5 +114,9 @@ export class OrderComponent implements OnInit {
   }
   getproduit(id: string): Promise<Product> {
     return this.userService.getproduit(id).toPromise();
+  }
+  logout() {
+    this.tokenStorageService.signOut();
+    this.router.navigate(['/login']);
   }
 }

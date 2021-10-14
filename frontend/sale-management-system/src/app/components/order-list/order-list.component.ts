@@ -5,6 +5,8 @@ import { Order } from 'src/app/models/order';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { UpdateStatusComponent } from '../update-status/update-status.component';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-order-list',
@@ -28,7 +30,9 @@ export class OrderListComponent implements OnInit {
   constructor(
     private service: Service1Service,
     private userservice: UserService,
-    private dialogRef: MatDialog
+    private dialogRef: MatDialog,
+    private tokenStorageService: TokenStorageService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -65,5 +69,9 @@ export class OrderListComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       this.fetchAllUsers();
     });
+  }
+  logout() {
+    this.tokenStorageService.signOut();
+    this.router.navigate(['/login']);
   }
 }

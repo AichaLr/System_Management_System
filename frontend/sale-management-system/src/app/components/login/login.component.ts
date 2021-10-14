@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     if (this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
-      this.roles = this.tokenStorage.getUser().roles;
+      //this.roles = this.tokenStorage.getUser().roles;
     }
   }
   onSubmit() {
@@ -34,20 +34,18 @@ export class LoginComponent implements OnInit {
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         this.roles = this.tokenStorage.getUser().roles;
+
+        // this.reloadPage();
         if (this.roles == 'ROLE_FOURNISSEUR') {
           this.router.navigate(['/fournisseur']);
         } else if (this.roles == 'ROLE_RESPONSABLE') {
-          this.router.navigate(['/responsable']);
+          this.router.navigate(['/produits']);
         }
-        // this.reloadPage();
       },
       (err) => {
         this.errorMessage = err.error.message;
         this.isLoginFailed = true;
       }
     );
-  }
-  reloadPage() {
-    window.location.reload();
   }
 }

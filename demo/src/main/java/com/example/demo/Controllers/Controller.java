@@ -6,10 +6,7 @@ import com.example.demo.Payload.request.Signuprequest;
 import com.example.demo.Payload.request.SignuprequestFournisseur;
 import com.example.demo.Payload.response.Jwtresponse;
 import com.example.demo.Payload.response.Messageresponse;
-import com.example.demo.Repositories.CommandeRepository;
-import com.example.demo.Repositories.FournisseurRepository;
-import com.example.demo.Repositories.RoleRepository;
-import com.example.demo.Repositories.UserRepository;
+import com.example.demo.Repositories.*;
 import com.example.demo.Security.jwt.JwtUtils;
 import com.example.demo.Services.UserDetailsImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,6 +50,8 @@ public class Controller {
 
     @Autowired
     JwtUtils jwtUtils;
+    @Autowired
+    ProduitRepository produitRepository;
 @Autowired
 CommandeRepository commandeRepository;
 
@@ -227,11 +226,15 @@ fournisseurRepository.save(fournisseur);
 
 Commande commande1=new Commande(commande.getDate(),commande.getTotale(), commande.getStatus(),commande.getProduit(),commande.getFournisseur());
 commandeRepository.save(commande1);
-//Produit produit=new Produit(commande.getProduit().getId(),commande.getProduit().getIntitule(),commande.getProduit().getQtt(),commande.getProduit().getPrix_unitaire(),commande.getProduit().getMontant());
-
-
 return "commande created successfully";    }
+    @PostMapping("/addproduct")
+    public String saveproduct(@RequestBody Produit produit) {
+        // List<level> levelList=new List<>();
 
+        Produit produit1=new Produit(produit.getIntitule(),produit.getQtt(),produit.getPrix_unitaire(),produit.getMontant());
+produitRepository.save(produit1);
+
+        return "product created successfully";    }
 
 @PostMapping("/updateorder/{id}/{status}")
     public Optional<Commande> update(@PathVariable Long id,@PathVariable String status) {

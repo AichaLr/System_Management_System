@@ -36,7 +36,7 @@ public class Produit {
         return intitule;
     }
 
-    public void setIntitule(String intitulé) {
+    public void setIntitule(String intitule) {
         this.intitule = intitule;
     }
 

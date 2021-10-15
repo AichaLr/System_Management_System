@@ -13,7 +13,7 @@
 .sidenav a {
   padding: 6px 8px 6px 16px;
   text-decoration: none;
-  font-size: 25px;
+  font-size: 18px;
   color: #818181;
   display: block;
 }
@@ -24,7 +24,8 @@
 
 .main {
   margin-left: 160px; /* Same as the width of the sidenav */
-  font-size: 10px; /* Increased text to enable scrolling */
+  font-size: 18px;
+  /* Increased text to enable scrolling */
   padding: 0px 10px;
 }
 

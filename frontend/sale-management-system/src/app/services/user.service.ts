@@ -20,4 +20,22 @@ export class UserService {
   getAdminBoard(): Observable<any> {
     return this.http.get(API_URL + 'responsable', { responseType: 'text' });
   }
+  getlistfournisseurs(): Observable<any> {
+    return this.http.get(API_URL + 'listfournisseur');
+  }
+  getfournisseur(id): Observable<any> {
+    return this.http.get(API_URL + 'fournisseurrr/' + id);
+  }
+  getproduit(id): Observable<any> {
+    return this.http.get(API_URL + 'produit/' + id);
+  }
+  getlistproduits(): Observable<any> {
+    return this.http.get(API_URL + 'listproduits');
+  }
+  getlistorders(): Observable<any> {
+    return this.http.get(API_URL + 'listcommandes');
+  }
+  getfournisseurorders(id): Observable<any> {
+    return this.http.get(API_URL + 'etatcommande/' + id);
+  }
 }

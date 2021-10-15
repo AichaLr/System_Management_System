@@ -1,15 +1,22 @@
 <div class="sidenav">
-  <a [routerLink]="['../produits']">Products</a>
-  <a [routerLink]="['../fournisseurs']">Suppliers List</a>
-  <a [routerLink]="['../orderlist']">Orders List</a>
-  <a [routerLink]="['../order']">Order</a>
-  <a (click)="logout()">Logout</a>
+  <a [routerLink]="['../produits']">Products <i class="fa fa-cart-plus"></i></a>
+  <a [routerLink]="['../fournisseurs']"
+    >Suppliers List <i class="fa fa-users"></i
+  ></a>
+  <a [routerLink]="['../orderlist']"
+    >Orders List <i class="fa fa-list-alt"></i
+  ></a>
+  <a [routerLink]="['../order']">Order <i class="fa fa-truck"></i> </a>
+  <a (click)="logout()">Logout <i class="fa fa-sign-out"></i> </a>
 </div>
 
 <div class="main">
-  <h1>Ordered Products</h1>
+  <h2>Ordered Products</h2>
 
-  <div class="mat-elevation-z8">
+  <div
+    style="width: 650px; margin-left: 12%; margin-top: 3%"
+    class="mat-elevation-z8"
+  >
     <mat-card class="mat-elevation-z0">
       <mat-form-field>
         <input
@@ -22,7 +29,7 @@
       <button
         mat-raised-button
         color="primary"
-        [routerLink]="['/dashboard/addproductorder']"
+        [routerLink]="['../order']"
         type="button"
         style="float: right"
       >

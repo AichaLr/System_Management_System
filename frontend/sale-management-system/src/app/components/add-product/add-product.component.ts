@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/models/product';
 import { Service1Service } from 'src/app/services/service1.service';
 import { Router } from '@angular/router';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
 
 @Component({
   selector: 'app-add-product',
@@ -11,7 +12,11 @@ import { Router } from '@angular/router';
 export class AddProductComponent implements OnInit {
   product: any;
 
-  constructor(private service: Service1Service, private router: Router) {}
+  constructor(
+    private service: Service1Service,
+    private router: Router,
+    private tokenStorageService: TokenStorageService
+  ) {}
 
   ngOnInit(): void {
     this.product = new Product();
@@ -37,5 +42,9 @@ export class AddProductComponent implements OnInit {
       }
     );
     this.router.navigate(['/produits']);
+  }
+  logout() {
+    this.tokenStorageService.signOut();
+    this.router.navigate(['/login']);
   }
 }

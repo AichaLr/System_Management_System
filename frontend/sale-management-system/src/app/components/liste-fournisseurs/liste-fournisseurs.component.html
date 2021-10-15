@@ -1,15 +1,20 @@
 <div class="sidenav">
-  <a [routerLink]="['../produits']">Products</a>
-  <a [routerLink]="['../fournisseurs']">Suppliers List</a>
-  <a [routerLink]="['../orderlist']">Orders List</a>
-  <a [routerLink]="['../order']">Order</a>
-  <a (click)="logout()">Logout</a>
+  <a [routerLink]="['../produits']">Products <i class="fa fa-cart-plus"></i></a>
+  <a [routerLink]="['../fournisseurs']"
+    >Suppliers List <i class="fa fa-users"></i
+  ></a>
+  <a [routerLink]="['../orderlist']"
+    >Orders List <i class="fa fa-list-alt"></i
+  ></a>
+  <a [routerLink]="['../order']">Order <i class="fa fa-truck"></i> </a>
+  <a (click)="logout()">Logout <i class="fa fa-sign-out"></i> </a>
 </div>
-
+<!--
+/*
 <div class="main">
   <div class="container">
     <label>
-      <h1>Suppliers List</h1>
+      <h2>Suppliers List</h2>
     </label>
     <br />
     <br />
@@ -20,12 +25,6 @@
           <th>Supplier Id</th>
           <th>Name</th>
           <th>Location</th>
-
-          <th [routerLink]="['/dashboard/addsupplier']">
-            <button type="submit" class="btn btn-success">
-              Add New Supplier
-            </button>
-          </th>
         </tr>
       </thead>
       <tbody>
@@ -40,4 +39,69 @@
   </div>
 
   <br />
+</div>
+
+
+*/
+-->
+
+<div class="main">
+  <div>
+    <div class="d-flex flex-column" id="content-wrapper">
+      <div id="content">
+        <div class="container-fluid">
+          <h2 class="text-dark mb-4">Suppliers List</h2>
+          <div class="card shadow">
+            <div class="card-header py-3">
+              <p class="text-primary m-0 font-weight-bold">Suppliers</p>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-6 text-nowrap">
+                  <div
+                    id="dataTable_length"
+                    class="dataTables_length"
+                    aria-controls="dataTable"
+                  ></div>
+                </div>
+                <div class="col-md-6">
+                  <div
+                    class="text-md-right dataTables_filter"
+                    id="dataTable_filter"
+                  ></div>
+                </div>
+              </div>
+              <div
+                class="table-responsive table mt-2"
+                id="dataTable"
+                role="grid"
+                aria-describedby="dataTable_info"
+              >
+                <table class="table my-0" id="dataTable">
+                  <thead class="colour">
+                    <tr>
+                      <!-- <th scope="col">Id</th> -->
+                      <th scope="col">Supplier Id</th>
+                      <th scope="col">Name</th>
+                      <th scope="col">Location</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let supplier of context">
+                      <!-- <th scope="row">{{product.productId}}</th> -->
+                      <td>{{ supplier.id }}</td>
+                      <td>{{ supplier.nom }}</td>
+                      <td>
+                        {{ supplier.adresse }}
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
